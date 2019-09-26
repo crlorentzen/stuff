@@ -10,11 +10,11 @@ BASEDIR=$(dirname "$0")
 PLEXPOSTPROC="$BASEDIR/PlexPostProc.sh"
 FILETOPROC="$1"         # %FILE% - Filename of original file
 
-DEBUG=0
+DEBUG=1
 
 if [ $DEBUG -ne 0 ]; then
   LOG=$(mktemp -t PlexPost-$(date -Is).XXX.log)
-  touch $LOG
+  chmod 664 $LOG
 
   echo "$(date -Ins) BEGIN" | tee -a $LOG
   echo "===VARIABLES===" | tee -a $LOG
