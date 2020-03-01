@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>Plex Media Server</short>
+  <description>This opens up PlexMediaServer for http (32400), upnp, and autodiscovery.</description>
+  <port port="32469" protocol="tcp"/>
+  <port port="32413" protocol="udp"/>
+  <port port="1900" protocol="udp"/>
+  <port port="32400" protocol="tcp"/>
+  <port port="32412" protocol="udp"/>
+  <port port="32410" protocol="udp"/>
+  <port port="32414" protocol="udp"/>
+</service>
