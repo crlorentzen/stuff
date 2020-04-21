@@ -2,8 +2,16 @@
 
 ## Plex
 1. Build the iojail
-  - Will add commands later, initially used GUI. Planning to build another test install
-1. Install Plex in jail
+  ```
+  jail_base='/mnt/jails/iocage/jails/'
+  jail_name='plex-test'
+  bsd_ver='11.3-RELEASE'
+  
+  iocage stop ${jail_name} && iocage destroy ${jail_name}
+  
+  iocage create -n ${jail_name} -r ${bsd_ver} vnet="on" bpf="on" dhcp="on" boot="on"
+  ```
+2. Install Plex in jail
 Ensure using latest packages
   - edit /etc/pkg/FreeBSD.conf
     - Change /quarterly to /latest
@@ -14,7 +22,7 @@ Ensure using latest packages
     * `sysrc plexmediaserver_enable=YES`
   - Manually start (if configured for start on boot, if not use onestart)
     * service plexmediaserver start
-1. Install Post Processing Tools
+3. Install Post Processing Tools
   - Handbrake:\
   Handbrake requires some dependencies which cannot be pulled via the binary package manager (pkg), so we will use the portsnap tool to download and install from source
     - Get portsnap sources: `portsnap fetch extract`
