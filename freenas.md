@@ -3,7 +3,6 @@
 ## Plex
 1. Build the iojail
   ```
-  jail_base='/mnt/jails/iocage/jails/'
   jail_name='plex-test'
   bsd_ver='11.3-RELEASE'
   
@@ -51,7 +50,6 @@ https://www.ixsystems.com/community/threads/howto-how-to-boot-linux-vms-using-ue
 ## Full Scripts
 ### Plex iocage
 ```
-jail_base='/mnt/jails/iocage/jails/'
 jail_name='plex-test'
 bsd_ver='11.3-RELEASE'
 ip4='10.1.10.42/24'
