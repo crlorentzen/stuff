@@ -43,7 +43,6 @@ https://www.ixsystems.com/community/threads/howto-how-to-boot-linux-vms-using-ue
 1. Configure the VNC session to 800x600 resolution, fixes garbled VNC output.
 1. Use VNC to install the OS.
 1. Fix boot issue, "The bhyve UEFI firmware conforms to the known “Default Boot Behaviour” and looks for the file \EFI\BOOT\boot64.efi in the EFI partition of your VM. If it's not present you end up in the EFI shell."
-  - After install, access the shell and copy grubx64.efi to /EFI/BOOT/bootx64.efi. Don't worry if you don't do this, you can always recover from the EFI shell later.
   - For Debian 10 amd64
     ```
     mkdir /boot/efi/EFI/BOOT
