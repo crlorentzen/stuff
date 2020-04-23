@@ -101,7 +101,10 @@ iocage restart ${jail_name}
 
 
 # install Handbrake
-iocage exec ${jail_name} 'portsnap fetch extract && portsnap fetch update'
-iocage exec ${jail_name} 'cd /usr/ports/audio/lame && make install clean'
-iocage exec ${jail_name} 'pkg install multimedia/handbrake'
+#  iocage exec ${jail_name} 'portsnap fetch extract && portsnap fetch update'
+#  iocage exec ${jail_name} 'cd /usr/ports/audio/lame && make install clean'
+#  iocage exec ${jail_name} 'pkg install multimedia/handbrake'
+
+# Install ffmpeg
+iocage exec ${jail_name} 'pkg install multimedia/ffmpeg'
 ```
