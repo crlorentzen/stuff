@@ -57,6 +57,7 @@ jail_name='plex-test'
 bsd_ver='11.3-RELEASE'
 ip4='10.1.10.42/24'
 rtr='10.1.10.254'
+data_base='/mnt/data/'
 
 iocage stop ${jail_name} && iocage destroy ${jail_name}
 y
@@ -74,11 +75,12 @@ for dir in {'/media/tv','/media/movies','/media/music'}
   do 
   echo "${dir}"
   iocage exec ${jail_name} "mkdir -p ${dir}"
-  iocage fstab -a ${jail_name} "/mnt/data${dir}" "${dir}" nullfs ro 0 0  
+  iocage fstab -a ${jail_name} "${data_base}${dir}" "${dir}" nullfs ro 0 0  
 done
 
-iocage exec ${jail_name} 'mkdir -p /media/recordings'
-iocage fstab -a ${jail_name} /mnt/data/media/recordings /media/recordings nullfs rw 0 0
+dir='/media/recordings'
+iocage exec ${jail_name} "mkdir -p ${dir}"
+iocage fstab -a ${jail_name} "${data_base}${dir}" "${dir}" nullfs rw 0 0
 
 
 # Update to the latest repo
