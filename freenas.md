@@ -67,9 +67,10 @@ iocage create -n ${jail_name} -r ${bsd_ver} vnet="on" ip4_addr="vnet0|${ip4}" de
 
 iocage start ${jail_name}
 
-iocage exec ${jail_name} 'mkdir -p /config'
-mkdir "/mnt/data/jail_data/${jail_name}"
-iocage fstab -a ${jail_name} "/mnt/data/jail_data/${jail_name}" /config nullfs rw 0 0
+dir='/config'
+iocage exec ${jail_name} "mkdir -p ${dir}"
+mkdir "/mnt/data/jail_data/${jail_name}${dir}"
+iocage fstab -a ${jail_name} "/mnt/data/jail_data/${jail_name}${dir}" "${dir}" nullfs rw 0 0
 
 for dir in {'/media/tv','/media/movies','/media/music'}
   do 
