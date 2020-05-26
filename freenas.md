@@ -91,7 +91,7 @@ iocage exec ${jail_name} "echo -e 'FreeBSD: { url: \"pkg+http://pkg.FreeBSD.org/
 # Update pkg
 iocage pkg ${jail_name} update && iocage pkg ${jail_name} upgrade -y
 # Install Plex and dependencies
-iocage pkg ${jail_name} install -y plexmediaserver
+iocage pkg ${jail_name} install -y multimedia/plexmediaserver
 
 # Set permissions
 iocage exec ${jail_name} chown -R plex:plex /config
@@ -109,5 +109,5 @@ iocage restart ${jail_name}
 #  iocage exec ${jail_name} 'pkg install multimedia/handbrake'
 
 # Install ffmpeg
-iocage exec ${jail_name} 'pkg install multimedia/ffmpeg'
+iocage pkg ${jail_name} install -y multimedia/ffmpeg
 ```
