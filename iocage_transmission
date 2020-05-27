@@ -1,0 +1,39 @@
+jail_name='transmission'
+bsd_ver='11.3-RELEASE'
+ip4='10.1.10.53/24'
+rtr='10.1.10.254'
+data_base='/mnt/data/'
+
+iocage stop ${jail_name} && iocage destroy ${jail_name}
+y
+
+iocage create -n ${jail_name} -r ${bsd_ver} vnet="on" ip4_addr="vnet0|${ip4}" defaultrouter="${rtr}" boot="on"
+
+iocage start ${jail_name}
+
+dir='/config'
+iocage exec ${jail_name} "mkdir -p ${dir}"
+mkdir -p "/mnt/data/jail_data/${jail_name}${dir}"
+iocage fstab -a ${jail_name} "/mnt/data/jail_data/${jail_name}${dir}" "${dir}" nullfs rw 0 0
+
+dir='/media/downloads/'
+iocage exec ${jail_name} "mkdir -p ${dir}"
+iocage fstab -a ${jail_name} '/mnt/data/media/downloader/torrents/' "${dir}" nullfs rw 0 0
+
+# Update to the latest repo
+iocage exec ${jail_name} "mkdir -p /usr/local/etc/pkg/repos"
+iocage exec ${jail_name} "echo -e 'FreeBSD: { url: \"pkg+http://pkg.FreeBSD.org/\${ABI}/latest\" }' > /usr/local/etc/pkg/repos/FreeBSD.conf"
+
+# Update pkg
+iocage pkg ${jail_name} update && iocage pkg ${jail_name} upgrade -y
+
+# Install transmission
+iocage pkg ${jail_name} install -y net-p2p/transmission-daemon www/transmission-web
+
+iocage exec ${jail_name} sysrc 'transmission_enable=YES'
+iocage exec ${jail_name} sysrc 'transmission_conf_dir=/config'
+iocage exec ${jail_name} sysrc 'transmission_download_dir=/media/downloads'
+
+iocage exec ${jail_name} 'chown -R transmission:transmission /config'
+
+iocage restart ${jail_name}
