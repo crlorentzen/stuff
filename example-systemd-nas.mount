@@ -1,0 +1,13 @@
+[Unit]
+Description=Mount nfs
+DefaultDependencies=yes
+Requires=network-online.target
+
+[Mount]
+What= 192.0.2.1:/nfs/path
+Where=/local/path
+Type=nfs
+Options=defaults,rw,vers=4,noatime,nodiratime,noexec
+
+[Install]
+WantedBy=multi-user.target
