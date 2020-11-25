@@ -1,7 +1,8 @@
 # erlite USB replacement
 
-https://community.ui.com/questions/EdgeMax-rescue-kit-now-you-can-reinstall-EdgeOS-from-scratch/58d474b4-604d-48c9-871d-ff44fd9240f3
-https://community.ui.com/questions/Failing-USB-drive-on-a-Edgerouter-Lite/ca8240c4-6738-4e98-98ff-2b50f94f749d
+## Sources
+- https://community.ui.com/questions/EdgeMax-rescue-kit-now-you-can-reinstall-EdgeOS-from-scratch/58d474b4-604d-48c9-871d-ff44fd9240f3
+- https://community.ui.com/questions/Failing-USB-drive-on-a-Edgerouter-Lite/ca8240c4-6738-4e98-98ff-2b50f94f749d
 
 # OLD erlite
 ## Old Bootcmd 
