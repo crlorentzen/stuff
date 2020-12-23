@@ -1,0 +1,3 @@
+## NFS\
+sudo systemctl enable systemd-networkd-wait-online.service
+sudo systemctl start systemd-networkd-wait-online.service
